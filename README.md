@@ -68,7 +68,11 @@ To get a local copy up and running follow these simple example steps.
 ```sh
 git clone https://github.com/th-ms/Lotus-AIO.git
 ```
-2. Start the program
+2. Install node modules
+```sh
+npm i
+```
+3. Start the program
 ```sh
 electron main.js
 ```
