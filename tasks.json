@@ -1,0 +1,71 @@
+{
+  "J6DN7": {
+    "id": "J6DN7",
+    "type": 0,
+    "sitename": "Hibbett",
+    "monitorinput": "17H26",
+    "profile_id": "Test Profile",
+    "proxy_id": "localhost",
+    "size": "10.5",
+    "status": "Ready",
+    "stopped": true,
+    "random": false,
+    "colorid": "1000",
+    "monitordelay": "3000",
+    "errordelay": "3000"
+  },
+  "H9WQOFO": {
+    "id": "H9WQOFO",
+    "type": 1,
+    "sitename": "Tactics",
+    "monitorinput": "https://www.tactics.com/converse/one-star-pro-skate-shoes/black-black-black",
+    "profile_id": "Test Profile",
+    "proxy_id": "localhost",
+    "size": "10.5",
+    "status": "Ready",
+    "stopped": true,
+    "random": false,
+    "colorid": ""
+  },
+  "TJ76MT": {
+    "id": "TJ76MT",
+    "type": 1,
+    "sitename": "Tactics",
+    "monitorinput": "https://www.tactics.com/converse/one-star-pro-skate-shoes/black-black-black",
+    "profile_id": "Test Profile",
+    "proxy_id": "localhost",
+    "size": "11",
+    "status": "Ready",
+    "stopped": true,
+    "random": false,
+    "colorid": ""
+  },
+  "ST7S7": {
+    "id": "ST7S7",
+    "type": 1,
+    "sitename": "Tactics",
+    "monitorinput": "https://www.tactics.com/converse/one-star-pro-skate-shoes/black-black-black",
+    "profile_id": "Test Profile",
+    "proxy_id": "localhost",
+    "size": "13",
+    "status": "Ready",
+    "stopped": true,
+    "random": false,
+    "colorid": ""
+  },
+  "O8SMKA": {
+    "id": "O8SMKA",
+    "type": 0,
+    "sitename": "Hibbett",
+    "monitorinput": "17H26",
+    "profile_id": "Test Profile",
+    "proxy_id": "localhost",
+    "size": "12.5",
+    "status": "Ready",
+    "stopped": true,
+    "random": false,
+    "colorid": "1000",
+    "monitordelay": "3000",
+    "errordelay": "3000"
+  }
+}

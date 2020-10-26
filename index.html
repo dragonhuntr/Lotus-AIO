@@ -1,0 +1,473 @@
+<html>
+
+<head>
+    <title>LOTUS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Lotus</title>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <script src="tactics.js" def></script>
+    <script src="ubiq.js" def></script>
+    <script src="uniqlo.js" def></script>
+    <script src="index.js" def></script>
+    <script src="hibbett.js" def></script>
+    <script src="test.js" def></script>
+    <script src="profiles.js" def></script>
+    <script src="proxies.js" def></script>
+    <script src="tasks.js" def></script>
+    <script src="gottest.js" def></script>
+    <style>
+        .noselect {
+        user-drag: none; 
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        }
+    </style>
+    <style>
+     ::-webkit-scrollbar { 
+    display: none; 
+    }
+    .window-option:hover {
+    color: #B7B7B7;
+    cursor: pointer;
+    }
+    </style>
+    <style>
+        /* Popup container - can be anything you want */
+        .popup {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        /* The actual popup */
+        .popup .popuptext {
+          visibility: hidden;
+          width: 160px;
+          background-color: #555;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 8px 0;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 50%;
+          margin-left: -80px;
+        }
+        
+        /* Popup arrow */
+        .popup .popuptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+        
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+          visibility: visible;
+          -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+        }
+        
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+          from {opacity: 0;} 
+          to {opacity: 1;}
+        }
+        
+        @keyframes fadeIn {
+          from {opacity: 0;}
+          to {opacity:1 ;}
+        }
+        </style>
+</head>
+
+<body id="page-top" class="noselect">
+    <div style="-webkit-app-region: drag; background-color: #000040;height: 22px;position:fixed;z-index:10;position: fixed;width: 100%;">
+        <nav class="navbar navbar-light navbar-expand-md" style="margin-right: -30px;margin-top: -5px;z-index: 10;float: right;right: 0;">
+            <div class="container-fluid" style="-webkit-app-region: no-drag;">
+                <i id="minimize" class="fa fa-window-minimize window-option" style="margin-right: 10px;margin-left: 10px;width: 16px;"></i>
+                <i id="maximize" class="fa fa-window-maximize window-option" style="margin-right: 10px;margin-left: 10px;"></i>
+                <i id="close" class="fa fa-close window-option" style="margin-left: 10px;margin-top: 0px;"></i></div>
+        </nav>
+    </div>
+    <div id="wrapper" style="padding-top:22px;">
+        <nav style="position: fixed;" class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 noselect">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
+                    <div class="sidebar-brand-icon rotate-n-15 noselect"><img draggable=false src="assets/img/cherry-blossom.svg" style="height: 50px;"></div>
+                    <div class="sidebar-brand-text mx-3 noselect"><span><strong>Lotus&nbsp;</strong></span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li id="dashNav" style="background-color: #2c4384;"class="nav-item botSelection" role="presentation"><a class="nav-link" onclick="showDashboard()"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li id="profNav" style="" class="nav-item botSelection" role="presentation"><a class="nav-link" onclick="showProfiles()"><i class="fas fa-user"></i><span>Profiles</span></a></li>
+                    <li id="taskNav" style="" class="nav-item botSelection" role="presentation"><a class="nav-link" onclick="showNewTask()"><i class="fas fa-plus"></i><span>New Task</span></a></li>
+                    <li id="proxyNav" style="" class="nav-item botSelection" role="presentation"><a class="nav-link" onclick="showProxies()"><i class="fas fa-network-wired"></i><span>Proxies</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper" style="padding-left:224px;height:100%;min-height: 100vh;">
+            <div id="contentDashboard">
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <h3 class="text-dark mb-4">Tasks</h3>
+                    <div class="card shadow" style="margin-bottom: 20px;">
+                        <div class="card-body" style="padding-bottom: 0px;">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable" style="table-layout:fixed;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:100px;">Website</th>
+                                            <th  style="width:300px;">Keywords / URL</th>
+                                            <th style="width:110px;">Proxy Group</th>
+                                            <th  style="width:110px;">Profile</th>
+                                            <th  style="width:90px;">Size</th>
+                                            <th  style="width:130px;">Status</th>
+                                            <th  style="width:100px;"><a href="javascript:void(0);"><i onclick="start_all()" id="start-all--btn" class="fa fa-play" style="margin: 0px;margin-right: 20px;"></i></a>
+                                                <a href="javascript:void(0);"><i class="fas fa-stop" onclick="stop_all()" style="margin: 0px;margin-right: 20px;"></i></a>
+                                                <a href="javascript:void(0);"><i class="fa fa-trash" onclick="delete_all()" style="margin: 0px;margin-right: 0px;"></i></a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tasklist">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contentProfile" style="display: none;">
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <h3 class="text-dark mb-4">Profiles</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card shadow mb-4" style="max-height: 100%;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Profiles</h6>
+                                </div>
+                                <div class="card-body" style="height: 280px;padding: 20px;padding-bottom: 0px;">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody id="listofprofiles">
+                                                
+                                            </tbody>
+                                        </table>
+                                        <script>
+                                            window.onload=function(){
+                                            loadProfiles()
+                                            loadProxies()
+                                            loadTasks()
+                                            const {remote} = require('electron');
+                                            document.getElementById('close').addEventListener('click', closeWindow);
+                                            document.getElementById('minimize').addEventListener('click', minimizeWindow);
+                                            document.getElementById('maximize').addEventListener('click', maximizeWindow);
+
+                                            function closeWindow () {
+                                                var window = remote.BrowserWindow.getFocusedWindow();
+                                                window.close();
+                                            }
+
+                                            function minimizeWindow () {  
+                                                var window = remote.BrowserWindow.getFocusedWindow();
+                                                window.minimize();
+                                            }
+
+                                            function maximizeWindow () {
+                                                var window = remote.BrowserWindow.getFocusedWindow();
+                                                window.isMaximized() ? window.unmaximize() : window.maximize();
+                                            }
+                                        }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 font-weight-bold">Billing Information</p>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <div class="form-group"><label for="cardholdername"><strong>Card Holder Name</strong><br /></label><input type="text" class="form-control" placeholder="Full Name" name="cardname" id="cardname" value="" /></div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group"><label for="cardtype"><strong>Card Type</strong><br /></label><select id='cardType' class="form-control">
+                                                    <option  value="Amex" selected="">Amex</option>
+                                                    <option  value="Discover">Discover</option>
+                                                    <option  value="Mastercard">Mastercard</option>
+                                                    <option value="Visa">Visa</option>
+                                                </select></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label for="cardnumber"><strong>Card Number</strong></label><input class="form-control" type="text" placeholder="Credit Card Number" name="cnb" id="cnb" value=""></div>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <div class="form-group"><label for="xpm"><strong>Exp. Month</strong></label><input class="form-control" type="text" placeholder="XX" name="month" id="month" value=""></div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group"><label for="xpy"><strong>Exp. Year</strong></label><input class="form-control" type="text" placeholder="XXXX" name="year" id="year" value=""></div>
+                                            </div>
+                                           
+                                            <div class="col">
+                                                <div class="form-group"><label for="cvv"><strong>CVV</strong></label><input class="form-control" type="text" placeholder="CVV" name="cvv" id="cvv" value=""></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row" style="height: 100%;">
+                                <div class="col" style="height: 100%;">
+                                    <div class="card shadow mb-3" style="height: 100%;">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 font-weight-bold">Shipping Information</p>
+                                        </div>
+                                        <div class="card-body" style="height: 100%;padding-bottom: 0px;">
+                                            <form>
+                                                <div class="form-row" style="margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="username"><strong>Profile Name</strong></label><input class="form-control" type="text" placeholder="Profile Name" name="profilename" id="profilename" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="phone"><strong>Phone Number</strong></label><input class="form-control" type="text" placeholder="Phone Number" name="phone" id="phone" value="" /></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="email"><strong>Email Address</strong></label><input class="form-control" type="email" placeholder="Email" name="email" id="email" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="First Name" name="firstName" id="firstName" value=""></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="Last Name" name="lastName" id="lastName" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="first_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" id="address" value=""></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="last_name"><strong>2nd Address</strong><br></label><input class="form-control" type="text" placeholder="Apt #" name="address2" id="address2" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="first_name"><strong>Zip Code</strong></label><input class="form-control" type="text" placeholder="ZIP" name="zip" id="zip" value=""></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="last_name"><strong>City</strong><br></label><input class="form-control" type="text" placeholder="City" name="city" id="city" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-top: 0px;margin-bottom: 10px;">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="country"><strong>Country</strong></label><input class="form-control" type="text" placeholder="Country" name="country" id="country" value=""></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="state"><strong>State</strong><br></label><input class="form-control" type="text" placeholder="State" name="state" id="state" value=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row" style="margin-top: 0px;margin-bottom: 10px;">
+                                                    <div class="col" style="height:30px;">
+                                                        <div class="form-group text-center"><button class="btn btn-primary btn-sm" type="button" onclick="newProfile()" style="margin: 5px;">New Profile</button><button class="btn btn-success btn-sm" type="button" onclick="saveProfile()" style="margin: 5px;">Save Profile</button><button class="btn btn-danger btn-sm"
+                                                            type="button" onclick="deleteProfile()" style="margin: 5px;">Delete Profile</button></div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="contentNewTask" class="container-fluid" style="margin-top: 20px;display: none;">
+                    <h3 class="text-dark mb-4">New Task</h3>
+                    <div class="card shadow mb-3" style="height: 100%;">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Task Settings</p>
+                        </div>
+                        <div class="card-body" style="height: 100%;padding-bottom: 0px;">
+                            <form>
+                                <div class="form-row" style="margin-bottom: 10px;">
+                                    <div class="col">
+                                        <div class="form-group"><label for="username"><strong>Site</strong></label><select class="form-control" id="siteselection" onchange="
+                                            if (this.value == 'Hibbett') {
+                                                document.getElementById('monitortype').value = '0';
+                                                document.getElementById('monitortype').options[1].disabled = true;
+                                                document.getElementById('monitortype').options[2].disabled = true;
+                                                document.querySelectorAll('div.hibbetSelection').forEach(e => {
+                                                    e.style.display = '';
+                                                });
+                                                document.getElementById('fetchColorBtn').classList = ''
+                                                document.getElementById('fetchColorBtn').classList = 'btn btn-primary btn-sm'
+                                            } else {
+                                                document.getElementById('monitortype').options[0].disabled = false;
+                                                document.getElementById('monitortype').options[1].disabled = false;
+                                                document.getElementById('monitortype').options[2].disabled = false;
+                                                document.getElementById('hibbettcolor').value = '';
+                                                document.querySelectorAll('div.hibbetSelection').forEach(e => {
+                                                    e.style.display = 'none';
+                                                });
+                                            }
+                                            ">
+                                            <option  value="Hibbett" selected="">Hibbett</option>
+                                            <option  value="Tactics">Tactics</option>
+                                            <option  value="Uniqlo">Uniqlo</option>
+                                            <option value="Ubiq">Ubiq</option>
+                                        </select></div>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 10px;">
+                                    <div class="col">
+                                        <div class="form-group"><label for="monitortype"><strong>Monitor Type</strong><br></label>
+                                            <select id="monitortype" class="form-control"><option value="0">SKU</option>
+                                                <option value="1" disabled=true>URL</option>
+                                                <option value="2" disabled=true>Keywords</option>
+                                            </select></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="monitorinput" id="monitorInputTitle" class=""><strong>Monitor Input</strong><br></label>
+                                            <input class="form-control" placeholder="URL/Keywords/SKU" id="monitorinput" value="" onchange="document.getElementById('hibbettcolor').value='';document.getElementById('fetchColorBtn').classList = '';document.getElementById('fetchColorBtn').classList = 'btn btn-primary btn-sm';">
+                                        </div>
+                                    </div>
+                                    <div class="col hibbetSelection">
+                                        <div class="form-group"><label for="color"><strong>Color ID</strong><br></label>
+                                            <input class="form-control" placeholder="Color" id="hibbettcolor" value="" disabled=true>
+                                        </div>
+                                    </div>
+                                    <div class="col hibbetSelection">
+                                        <div class="form-group text-center d-flex justify-content-left" style="height:auto;padding-top:35px;">
+                                            <button class="btn btn-primary btn-sm" type="button" onclick="colorSearch()" id="fetchColorBtn">Fetch Color <div id="fetchLoading" style="display: none;" class="spinner-border text-light spinner-border-sm" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                              </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 7px;">
+                                    <div class="col">
+                                        <div class="form-group"><label for="size"><strong>Size</strong></label><select id="size" class="form-control"><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="5.5">5.5</option><option value="6">6</option><option value="6.5">6.5</option><option value="7">7</option><option value="7.5">7.5</option><option value="8">8</option><option value="8.5">8.5</option><option value="9">9</option><option value="9.5">9.5</option><option value="10">10</option><option value="10.5">10.5</option><option value="11">11</option><option value="11.5">11.5</option><option value="12">12</option><option value="12.5">12.5</option><option value="13">13</option><option value="13.5">13.5</option><option value="14">14</option><option value="">14.5</option><option value="15">15</option><option value="xxs">XXS</option><option value="xs">XS</option><option value="s">S</option><option value="m">M</option><option value="l">L</option><option value="xl">XL</option><option value="xxl">XXL</option></select>
+                                            <div
+                                                class="form-check" style="margin-top: 2px;margin-left: 2px;"><input class="form-check-input" type="checkbox" id="random"><label class="form-check-label" for="formCheck-1">Random size if not available</label></div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label for="last_name"><strong>Quantity</strong></label><input class="form-control" type="number" placeholder="Quantity" value="1"></div>
+                                </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 10px;">
+                            <div class="col">
+                                <div class="form-group"><label for="first_name"><strong>Profile</strong></label><select class="form-control" id="profileselection">
+                                    </select></div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group"><label for="last_name"><strong>Proxies</strong><br></label><select class="form-control" id="proxyselection"><option value="localhost">localhost</option>
+                                </select></div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 10px;">
+                            <div class="col">
+                                <div class="form-group"><label for="taskquantity"><strong>Number of Tasks</strong></label><input class="form-control" type="number" id="numberoftasks" placeholder="Quantity" value="1"></div>
+                            </div>
+                            <div class="col">
+                                <div class="form-row" style="margin: 0px;">
+                                    <div class="col" style="padding: 0px;">
+                                        <div class="form-group" style="padding-right: 5px;"><label for="monitordelay"><strong>Monitor Delay</strong></label><input class="form-control" type="number" id="monitordelay" placeholder="Monitor Delay" name="monitordelay" value="3000"></div>
+                                    </div>
+                                    <div class="col" style="padding: 0px;">
+                                        <div class="form-group" style="padding-left: 5px;padding-right: 0px;"><label for="retrydelay"><strong>Retry Delay</strong></label><input class="form-control" id="errordelay" type="text" placeholder="Error Delay" name="errordelay" value="3000"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom: 10px;">
+                            <div class="col d-lg-flex d-xl-flex justify-content-lg-center justify-content-xl-center"><button class="btn btn-primary btn-sm" type="button" onclick="createTask()" style="margin: 5px;min-width: 100px;">Create Task</button></div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="contentProxies" style="display: none;">
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <h3 class="text-dark mb-4">Proxies</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card shadow mb-4" style="max-height: 100%;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Proxy Groups</h6>
+                                </div>
+                                <div class="card-body" style="max-height: 400px;padding: 20px;padding-bottom: 0px;">
+                                    <div class="table-responsive">
+                                        <table class="table" >
+                                            <tbody id="listofproxies">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center"><button class="btn btn-primary btn-sm" type="button" onclick="newProxy()" style="margin: 5px;">New Proxy Group</button><button class="btn btn-success btn-sm" type="button" onclick="saveProxy()" style="margin: 5px;">Save Proxy Group</button><button class="btn btn-danger btn-sm"
+                                        type="button" onclick="deleteProxy()" style="margin: 5px;">Delete Proxy Group</button></div>
+                            </div>
+                            <div class="card shadow mb-4" style="max-height: 100%;height: 534px;">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">New Proxy Group</h6>
+                                </div>
+                                    <div class="form-group" style="padding:20px;"><label for="proxygroupname"><strong>Proxy Group Name</strong></label><input type="text" class="form-control" placeholder="Name" id="proxyname"/></div>
+                                <div class="card-body" style="max-height: 600px;padding: 20px;padding-bottom: 0px;padding-top:0px;"><textarea style="width: 100%;height: 90%;max-height:330px;" id="proxyinput"></textarea></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">Proxies</h6>
+                                </div>
+                                <div class="card-body" style="padding-bottom: 0px;">
+                                    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table dataTable my-0" id="dataTable">
+                                            <tbody id="proxytable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column" id="content-wrapper">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
