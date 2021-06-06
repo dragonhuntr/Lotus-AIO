@@ -1,0 +1,2 @@
+root@vps66937 [/home/sneake28/vibs/develop/Lotus-AIO]# root@vps66937 [/home/sneake28/vibs/develop/Lotus-AIO]# /home/sneake28/vibs/develop/Lotus-AIO/node_modules/electron/dist/electron: error while loading shared libraries: libXcomposite.so.1: cannot open shared object file: No such file or directory
+-bash: root@vps66937: command not found
